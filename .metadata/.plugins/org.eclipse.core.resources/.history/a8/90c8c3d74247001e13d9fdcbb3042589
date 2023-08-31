@@ -1,0 +1,52 @@
+package submitableAnswers;
+
+
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class Practical2 {
+public static  void FileReaderOutput(String path) throws FileNotFoundException{
+	try (BufferedReader importFile = new BufferedReader(new FileReader(path))) {
+		String source = "";
+		try {
+			do {
+				source = importFile.readLine();
+
+			} while (importFile!=null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			String [] output=source.split("[,-]");;
+		for (String result : output) {
+			System.out.println(result);
+		}
+	} catch (FileNotFoundException e) {
+		throw e;
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}		
+		
+		
+}
+   
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		// ask user for nth smallest value
+
+		FileReaderOutput("src/TestFileLoadANDoutput.txt");
+
+	}
+
+	
+
+	}
+
+

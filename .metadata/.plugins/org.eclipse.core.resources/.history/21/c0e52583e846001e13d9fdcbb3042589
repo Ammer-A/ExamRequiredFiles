@@ -1,0 +1,59 @@
+package submitableAnswers;
+
+
+
+import java.util.*;
+import java.util.stream.*;
+import java.util.function.IntPredicate;
+
+public class Practical1 {
+
+     static   Scanner scanner = new Scanner(System.in);
+	final static int numMax = 50;
+
+	public static void NthMin() {
+
+		System.out.println("Random Generated number with nth smallest finder".toUpperCase());
+
+    System.out.print("Enter the minimum value: ");
+    //1.;
+    //request user minimum value
+        int userMin = scanner.nextInt();
+// create the random and assign it 
+		Random Randnum = new Random();
+
+		//2. i used the IntPredicate as method to filter the user given minimum range from the the generated array  ;
+		//3 create an array using random number with the range given by the user with the maxium being the array size times the user defined minimum  value(note i chose twice because i thought the max range value would be enough .;
+		// by using intstream it allows me to use distinct for non duplicate numbers
+		// the limit is define the array size and to array converts it
+		
+        IntPredicate ifuserInputMinVal = n->n==userMin;
+		int[] RandNumGenWithRange = Randnum.ints(userMin, numMax*userMin + 1).filter(ifuserInputMinVal.negate()).distinct().sequential().limit(numMax).toArray();
+		System.out.println("--------");
+		System.out.println("Generated array:array max size:"+numMax);
+		System.out.println("--------");
+		System.out.println(Arrays.toString(RandNumGenWithRange));
+
+		//
+		//4. Manipulate the array to extract the requested value and in this case smallest value;
+		OptionalInt minValue = IntStream.of(RandNumGenWithRange).min();
+
+		System.out.println("--------");
+
+		// ---------------------------------------------------
+// change  the array answer response display type  with getasInt 
+		System.out.println(" Randomize array's nth smallest = " + minValue.getAsInt());
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// ask user for nth smallest value
+
+		NthMin();
+
+	}
+
+	}
+
+

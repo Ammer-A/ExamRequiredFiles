@@ -1,0 +1,47 @@
+package submitableAnswers;
+
+
+
+import java.util.*;
+import java.util.stream.*;
+import java.util.function.IntPredicate;
+
+public class Practical1 {
+
+     static   Scanner scanner = new Scanner(System.in);
+	final static int numMax = 50;
+
+	public static void NthMin() {
+
+		System.out.println("Random Generated number with nth smallest finder".toUpperCase());
+
+    System.out.print("Enter the minimum value: ");
+        int userMin = scanner.nextInt();
+
+		Random Randnum = new Random();
+
+        IntPredicate ifuserInputMinVal = n->n==userMin;
+		int[] RandNumGenWithRange = Randnum.ints(userMin, numMax + 1).filter(ifuserInputMinVal.negate()).distinct().limit(numMax).toArray();
+		System.out.println(Arrays.toString(RandNumGenWithRange));
+
+		OptionalInt minValue = IntStream.of(RandNumGenWithRange).min();
+
+		System.out.println("--------");
+
+		// ---------------------------------------------------
+
+		System.out.println(" Randomize array's nth smallest = " + minValue.getAsInt());
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// ask user for nth smallest value
+
+		NthMin();
+
+	}
+
+	}
+
+
